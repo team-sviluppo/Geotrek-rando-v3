@@ -8,9 +8,15 @@
     "shouldDisplayText": true
   },
   "activityBar": {
-    "shouldDisplay": true
+    "shouldDisplay": false
   },
   "suggestions": {
-    "default": []
+    "default": [
+      {
+        "titleTranslationId": "home.itinerantTreks",
+        "iconUrl": "/icons/practice-pedestrian.svg",
+        "ids": ["2", "3", "4", "5", "12", "17", "23"]
+      }
+    ]
   }
 }
