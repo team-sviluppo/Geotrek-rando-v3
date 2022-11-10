@@ -18,6 +18,9 @@ export interface HomeSectionProps {
 }
 
 export const HomeSection: React.FC<HomeSectionProps> = ({ title, iconUrl, results, type }) => {
+
+  console.log(JSON.stringify(results));
+
   return (
     <div id={'home_section'} className={`flex flex-col`}>
       <div
