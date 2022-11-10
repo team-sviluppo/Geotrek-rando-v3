@@ -1,22 +1,5 @@
 {
-  "searchResultsPageSize": 10,
-  "mapResultsPageSize": 250,
-  "maxPoiPerPage": 50,
-  "maxTouristicContentPerPage": 50,
-  "enableSensitiveAreas": false,
-  "enableOutdoor": true,
-  "enableTouristicEvents": true,
-  "portalIds": [1],
   "apiUrl": "https://geoadmin-torgnon.hextra.dev/api/v2",
-  "reservationPartner": "parcdesecrins",
-  "reservationProject": "parcdesecrins",
-  "googleAnalyticsId": "G-8FSV2N4FXN",
-  "googleSiteVerificationToken": "eKAyxwaXAobFWQcJen0mnZ8T3CpLoN45JysXeNkRf38",
   "baseUrl": "https://geotrek-torgnon.hextra.dev",
-  "fallbackImageUri": "https://upload.wikimedia.org/wikipedia/fr/d/df/Logo_ecrins.png",
-  "touristicContentLabelImageUri": "https://upload.wikimedia.org/wikipedia/fr/d/df/Logo_ecrins.png",
-  "applicationName": "Geotrek Comune Torgnon",
-  "enableReport": true,
-  "enableSearchByMap": true,
-  "enableServerCache": true
+  "applicationName": "Geotrek Comune Torgnon"
 }

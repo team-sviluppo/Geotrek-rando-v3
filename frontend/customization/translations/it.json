@@ -1,1 +1,260 @@
-{}
+{
+  "header": {
+    "menu": "Menu",
+    "language": "Lingua",
+    "seeMore": "Leggi di più",
+    "favorites": "Preferiti",
+    "goToSearch": "Ricerca",
+    "offline": "Contenuto offline",
+    "home": "Iniziale"
+  },
+  "home": {
+    "title": "Geotrek Torgnon",
+    "selectPlaceholder": "Seleziona un'attività",
+    "seeMore": "Vedere più",
+    "mailTo": "Invia un'email",
+    "walking": "Escursioni",
+    "territoryTreks": "Escursioni da scoprire",
+    "itinerantTreks": "Itinerari da scoprire",
+    "services": "Servizi da scoprire",
+    "events": "Eventi da non perdere",
+    "outdoor": "Siti outdoor da scoprire"
+  },
+  "page": {
+    "back": "Ritorno",
+    "not-found": "Questa pagina non è stata trovata"
+  },
+  "search": {
+    "title": "Ricerca",
+    "description": "Scopri le escursioni che corrispondono ai tuoi desideri con il nostro motore di ricerca",
+    "book": "Prenotare",
+    "resultsFound": "{count, plural, =0 {# Nessun risultato trovato} one {# risultato trovato} other {# risultati trovati}}",
+    "resultsFoundShort": "{count, plural, =0 {# Nessun risultato} one {# risultato} other {# risultati}}",
+    "forThe": "Per il",
+    "seeMap": "Vedere la mappa",
+    "filter": "Filtro",
+    "reload": "Ricaricare",
+    "anErrorOccured": "C'è stato un errore",
+    "diary": "Diario",
+    "filters": {
+      "difficulty": "Difficoltà",
+      "practices": "Escursioni",
+      "outdoor": "Outdoor",
+      "treksOutdoorGrouped": "Activities",
+      "events": "Eventi",
+      "categories": "Servizi",
+      "cities": "Comune",
+      "localization": "Posizione",
+      "duration": "Durata",
+      "durationOptions": {
+        "H:0-1": "0 - 1h",
+        "H:1-2": "1h - 2h",
+        "H:2-5": "2h - 5h",
+        "H:5-10": "5h - 10h"
+      },
+      "districts": "Settore",
+      "themes": "Tema",
+      "routes": "Tipo di percorso",
+      "accessibilities": "Accessibilità",
+      "ascent": "Dislivello positivo",
+      "ascentOptions": {
+        "M:0-500": "0 - 500m",
+        "M:500-1000": "500m - 1km"
+      },
+      "length": "Lunghezza",
+      "lengthOptions": {
+        "KM:0-5": "0 - 5km",
+        "KM:5-10": "5km - 10km",
+        "KM:10-15": "10km - 15km",
+        "KM:15-50": "15km - 50km"
+      },
+      "structures": "Struttura",
+      "clearAll": "Cancellare tutto",
+      "filters": "Filtri",
+      "labels": "Altri"
+    },
+    "textFilter": "Ricerca...",
+    "beginDateFilter": "Data d'inizio",
+    "endDateFilter": "Data di fine",
+    "map": {
+      "seeResult": "Mostrare i dettagli",
+      "seeMe": "Vedere la mia posizione",
+      "panel": {
+        "trekChildren": "Fasi",
+        "poi": "Eredità",
+        "referencePoints": "Riferimenti",
+        "touristicContent": "Vicino",
+        "informationDesks": "Luoghi di informazione",
+        "courses": "Parcours",
+        "experiences": "Lieux de pratique",
+        "signage": "Segnaletica",
+        "infrastructure": "Infrastructures",
+        "service": "Others infos"
+      },
+      "resetView": "Rimettere a fuoco la mappa"
+    }
+  },
+  "details": {
+    "preview": "Presentazione",
+    "access": "Accesso",
+    "download": "Scaricare",
+    "children": "Passi",
+    "childrenFullTitle": "{count, plural, =0 {Nessun passo} one {# Passo} other {# Passi}}",
+    "poi": "Patrimoni",
+    "poiFullTitle": "{count, plural, =0 {Nessun patrimonio} one {# Patrimonio da scoprire} other {# I patrimoni da scoprire}}",
+    "source": "Autore",
+    "touristicContent": "Vicino",
+    "readMore": "Leggere di più",
+    "knowMore": "Saperne di più",
+    "readLess": "Leggere meno",
+    "close": "Chiudere",
+    "description": "Descrizione",
+    "recommandations": "Raccomandazioni",
+    "informationDesks": "Luoghi di informazione",
+    "practicalInformations": "Informazioni pratiche",
+    "accessibility": "Accessibilità",
+    "accessibility_level": "Livello di accessibilità",
+    "accessibility_covering": "Rivestimento",
+    "accessibility_exposure": "Esposizione",
+    "accessibility_advice": "Consigli",
+    "accessibility_slope": "Pendenza",
+    "accessibility_width": "Lunghezza",
+    "accessibility_signage": "Segnaletica",
+    "emergency_number": "Numero di emergenza",
+    "toSee": "Vedi anche",
+    "transport": "Trasporto",
+    "stationnement": "Parcheggio",
+    "access_parking": "Accesso stradale e parcheggi",
+    "reservation": "Prenotazione",
+    "sensitiveAreasRef": "Zone sensibili",
+    "sensitiveAreas": {
+      "title": "Zone di sensibilità ambientale",
+      "intro": "Lungo il suo percorso, attraverserà zone sensibili legate alla presenza di una specie o di un ambiente particolare. In queste zone, un comportamento adeguato può contribuire alla loro conservazione. Per informazioni più dettagliate, sono disponibili schede specifiche per ogni zona.",
+      "period": "Periodi di sensibilità :",
+      "practices": "Aree di attività interessate :",
+      "contact": "Contatto :"
+    },
+    "altimetricProfile": {
+      "title": "Profilo altimetro",
+      "totalLength": "Lunghezza totale",
+      "minElevation": "Altitudine min",
+      "maxElevation": "Altitudine massima"
+    },
+    "departure": "Partenza",
+    "arrival": "Arrivo",
+    "cities": "Comune attraversato",
+    "more": "Leggi di più",
+    "courses": "Corso",
+    "experiences": "Luoghi di pratica",
+    "gear": "Materiale",
+    "equipment": "Attrezzatura",
+    "typeSite": "Tipo di sito",
+    "typeCourse": "Tipo di corso",
+    "organizer": "Organizzatore",
+    "speaker": "Stakeholder",
+    "targetAudience": "Pubblico di riferimento",
+    "practicalInfo": "Informazioni pratiche",
+    "booking": "Prenotazione",
+    "centerOnMap": "Center on map"
+  },
+  "touristicContent": {
+    "contact": "Contatto",
+    "email": "email",
+    "website": "Sito web"
+  },
+  "map": {
+    "layerButton": {
+      "classic": "Piano",
+      "satellite": "Satellite"
+    },
+    "drawer": {
+      "next": "Passo successivo",
+      "prev": "Passo precedente"
+    }
+  },
+  "footer": {
+    "linksSectionTitle": "Informazioni complementari",
+    "links": "Links",
+    "access": "Come arrivare",
+    "legalMentions": "Informazioni legali",
+    "accessibility": "Regole di accessibilità",
+    "geotrek": "Geotrek"
+  },
+  "report": {
+    "title": "Segnala un problema o un errore",
+    "intro": "If you have found an error on this page or if you have noticed any problems during your hike, please report them to us here:",
+    "activity": "Attività",
+    "category": "Categoria",
+    "magnitude": "Portata del problema",
+    "comment": "Commenti",
+    "email": "Email",
+    "name": "Il tuo nome",
+    "image": "Image",
+    "button": "Segnala",
+    "cancel": "Cancella",
+    "success": "Grazie, il rapporto è stato inviato.",
+    "mapButton": {
+      "create": "Indicate the position of the report on the map",
+      "edit": "Edit the position of the report",
+      "validate": "Validate the position"
+    },
+    "GDPRDisclaimer": "These information will be used by <b>organism</b>, which commit to not sell your personal data to third parties. You have the right to read, modify, fix or delete your personal data (art. 34 de la loi \"Informatique et Libertés\"). To apply please send a mail to <a>contact</a>."
+  },
+  "error": {
+    "missing": "Il modulo non è completo"
+  },
+  "offline": {
+    "number": "{count} contenuto accessibile senza una connessione internet",
+    "presentation": "Per godersi i propri percorsi senza preoccuparsi della rete.",
+    "explain": "Incorpora questo articolo per accedervi offline",
+    "explainAvailable": "Questo articolo è disponibile offline",
+    "title": "Modalità offline",
+    "download": "Imbarco",
+    "isInCache": "Questo articolo è disponibile offline.",
+    "downloadInProgress": "Download in corso. Si prega di attendere",
+    "not-available": "Questo contenuto non è disponibile offline."
+  },
+  "actions": {
+    "cancel": "Cancella",
+    "close": "Chiudere",
+    "remove": "Cancellare",
+    "confirmRemove": "Sei sicuro di voler rimuovere questo elemento?"
+  },
+  "outdoorSite": {
+    "accessFullTitle": "Accesso",
+    "coursesFullTitle": "Les {count} parcours à découvrir",
+    "sitesFullTitle": "Il {conteggio} dei luoghi di pratica da scoprire"
+  },
+  "Wind": {
+    "N": "Nord",
+    "S": "Sud",
+    "E": "Est",
+    "W": "Ovest",
+    "NW": "Nord-Ovest",
+    "SW": "Sud-Ovest",
+    "NE": "Nord-Est",
+    "SE": "Sud-Est"
+  },
+  "dates": {
+    "singleDate": "il {date}",
+    "multipleDates": "dal {beginDate} al {endDate}"
+  },
+  "tooltip": {
+    "print": "Per stampare",
+    "show3D": "Mostra 3D",
+    "difficulty": "Difficoltà",
+    "period": "Periodo",
+    "orientation": "Orientamento",
+    "wind": "Vento",
+    "date": "Data",
+    "duration": "Durata",
+    "distance": "Distanza",
+    "elevation": "Elevazione positiva",
+    "negativeElevation": "Elevazione negativa",
+    "altitude": "Altitudine",
+    "assemblyPoint": "punto di raccolta",
+    "numberOfParticipants": "Numero di partecipanti",
+    "courseType": "Tipo de gara",
+    "network": "Rete"
+  }
+}

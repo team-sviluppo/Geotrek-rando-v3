@@ -1,14 +1,1 @@
-[
-  {
-    "id": "cities",
-    "display": false
-  },
-  {
-    "id": "structures",
-    "display": false
-  },
-  {
-    "id": "difficulty",
-    "display": false
-  }
-]
+[]
