@@ -105,8 +105,7 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
     (getGlobalConfig().minAltitudeDifferenceToDisplayElevationProfile ?? 0) <
       higherDifferenceElevation;
 
-  return useMemo(
-    () => (
+  return useMemo(() => (
       <>
         <PageHead
           title={details?.title}

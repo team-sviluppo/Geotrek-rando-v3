@@ -1,1 +1,32 @@
-{}
+{
+  "socialNetworks": [
+    { "id": "facebook", "url": "https://www.facebook.com/parcnationaldesecrins/" },
+    { "id": "twitter", "url": "https://twitter.com/pnecrins" }
+  ],
+  "links": [
+    {
+      "informationID": 4
+    },
+    { "label": "footer.links", "url": "https://www.ecrins-parcnational.fr/liens-internet" },
+    { "label": "footer.access", "url": "https://www.ecrins-parcnational.fr/venir-dans-les-ecrins" },
+    {
+      "label": "footer.legalMentions",
+      "url": "https://www.ecrins-parcnational.fr/mentions-legales"
+    },
+    {
+      "label": "footer.accessibility",
+      "url": "https://www.ecrins-parcnational.fr/regles-daccessibilite"
+    },
+    {
+      "label": "footer.geotrek",
+      "url": "https://geotrek.fr/"
+    }
+  ],
+  "contact": {
+    "name": "Comune di Torgnon",
+    "addressLine1": "11020 Torgnon (AO) - Italy",
+    "addressLine2": "Frazione Mongnod n. 4",
+    "number": "(+39) 0166.540213",
+    "mail": "segreteria@comune.torgnon.ao.it"
+  }
+}

@@ -1,1 +1,33 @@
 /* Override CSS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-gap: 1rem;
+  margin: auto;
+  width: 50%;
+}
+
+.grid > div {
+  display: grid;
+}
+
+.grid > div::before,
+.grid > div > img {
+  position: absolute;
+  max-width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.grid-footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-gap: 1rem;
+  margin: auto;
+  width: 50%;
+}
+
+.footer-custom {
+  padding-bottom: 20px;
+}
