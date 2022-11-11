@@ -73,45 +73,23 @@ interface OutdoorCourseProps extends BaseProps {
 
 interface TouristicEventProps extends BaseProps {
   type: 'TOURISTIC_EVENT';
-  informations: Record<any, any>;
+  informations: Record<string | number | symbol, string | number | symbol>;
 }
 
-const isTrek = (
-  content:
-    | TrekProps
-    | TouristicContentProps
-    | OutdoorSiteProps
-    | OutdoorCourseProps
-    | TouristicEventProps,
-): content is TrekProps => content.type === 'TREK';
+type trekType =
+  | TrekProps
+  | TouristicContentProps
+  | OutdoorSiteProps
+  | OutdoorCourseProps
+  | TouristicEventProps;
 
-const isOutdoorCourse = (
-  content:
-    | TrekProps
-    | TouristicContentProps
-    | OutdoorSiteProps
-    | OutdoorCourseProps
-    | TouristicEventProps,
-): content is OutdoorCourseProps => content.type === 'OUTDOOR_COURSE';
+const isTrek = (content: trekType): content is TrekProps => content.type === 'TREK';
+const isOutdoorCourse = (content: trekType): content is OutdoorCourseProps =>
+  content.type === 'OUTDOOR_COURSE';
+const isTouristicEvent = (content: trekType): content is TouristicEventProps =>
+  content.type === 'TOURISTIC_EVENT';
 
-const isTouristicEvent = (
-  content:
-    | TrekProps
-    | TouristicContentProps
-    | OutdoorSiteProps
-    | OutdoorCourseProps
-    | TouristicEventProps,
-): content is TouristicEventProps => content.type === 'TOURISTIC_EVENT';
-
-export const ResultCard: React.FC<
-  (
-    | TrekProps
-    | TouristicContentProps
-    | OutdoorSiteProps
-    | OutdoorCourseProps
-    | TouristicEventProps
-  ) & { asColumn?: boolean }
-> = props => {
+export const ResultCard: React.FC<trekType & { asColumn?: boolean }> = props => {
   const {
     id,
     hoverId,
@@ -127,6 +105,7 @@ export const ResultCard: React.FC<
     type,
     asColumn,
   } = props;
+
   const { setHoveredCardId } = useListAndMapContext();
 
   const { locale } = useIntl();
@@ -213,28 +192,28 @@ export const ResultCard: React.FC<
             {isOutdoorCourse(props) && (
               <InformationContainer>
                 <InformationLayout>
-                  {props.informations.duration && (
+                  {props.informations.duration != null && (
                     <LocalIconInformation icon={Clock}>
                       {props.informations.duration}
                     </LocalIconInformation>
                   )}
-                  {props.informations.elevation && (
+                  {props.informations.elevation != null && (
                     <LocalIconInformation icon={TrendingUp}>
                       {props.informations.elevation}
                     </LocalIconInformation>
                   )}
-                  {props.informations.maxElevation && (
+                  {props.informations.maxElevation != null && (
                     <LocalIconInformation icon={Altitude}>
                       {props.informations.maxElevation}
                       {dataUnits.distance}
                     </LocalIconInformation>
                   )}
-                  {props.informations.length && (
+                  {props.informations.length != null && (
                     <LocalIconInformation icon={CodeBrackets}>
                       {props.informations.length}
                     </LocalIconInformation>
                   )}
-                  {props.informations.height && (
+                  {props.informations.height != null && (
                     <LocalIconInformation icon={Height}>
                       {props.informations.height}
                     </LocalIconInformation>
@@ -250,7 +229,7 @@ export const ResultCard: React.FC<
                       {props.informations.difficulty.label}
                     </RemoteIconInformation>
                   )}
-                  {props.informations.duration && (
+                  {props.informations.duration != null && (
                     <LocalIconInformation icon={Clock}>
                       {props.informations.duration}
                     </LocalIconInformation>
@@ -283,8 +262,7 @@ export const ResultCard: React.FC<
             )}
           </DetailsLayout>
           {isTrek(props) &&
-            props.informations.reservationSystem !== null &&
-            false && ( // we disable this button because the booking behaviour is not implemented yet
+            props.informations.reservationSystem !== null && ( // we disable this button because the booking behaviour is not implemented yet
               <BookingButtonContainer>
                 <Button>
                   <FormattedMessage id="search.book" />

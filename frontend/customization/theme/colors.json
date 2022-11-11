@@ -1,6 +1,13 @@
 {
   "primary1": {
-    "DEFAULT": "#272727",
-    "light": "#4c4e4c"
+    "DEFAULT": "#0A3B12",
+    "light": "#0A3B09"
+  },
+  "primary3": "#0A3B12",
+  "categories": {
+    "trek": "blue",
+    "events": "red",
+    "outdoor": "#62AB41",
+    "service": "#3B89A2"
   }
 }
