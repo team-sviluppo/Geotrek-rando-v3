@@ -16,7 +16,7 @@ const {
 } = getNextConfig();
 
 const HomeUI: FunctionComponent = () => {
-  const { config, suggestions } = useHome();
+  const { config, suggestions, welcomeBanners } = useHome();
 
   const contentContainerClassname = `relative ${
     config.activityBar.shouldDisplay ? '-top-6 desktop:-top-15' : 'pt-6 desktop:pt-18'
@@ -37,7 +37,7 @@ const HomeUI: FunctionComponent = () => {
         <HomeContainer id="home_container">
           <BannerWithAsset
             shouldDisplayText={config.welcomeBanner.shouldDisplayText}
-            carouselUrls={config.welcomeBanner.carouselUrls}
+            carouselUrls={welcomeBanners}
             pictureUrl={config.welcomeBanner.pictureUrl}
             videoUrl={config.welcomeBanner.videoUrl}
           />

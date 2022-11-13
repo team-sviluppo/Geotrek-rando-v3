@@ -1,10 +1,14 @@
+export interface WelcomeBannerList {
+  [language: 'default' | string]: string[];
+}
+
 interface ActivityBar {
   shouldDisplay: boolean;
 }
 
 interface WelcomeBanner {
   videoUrl?: string;
-  carouselUrls?: string[];
+  carouselUrls?: WelcomeBannerList;
   pictureUrl?: string;
   shouldDisplayText: boolean;
 }
@@ -26,5 +30,6 @@ export interface SuggestionList {
 export interface HomePageConfig {
   welcomeBanner: WelcomeBanner;
   activityBar: ActivityBar;
+  carouselUrls: WelcomeBannerList;
   suggestions: Suggestion[];
 }
