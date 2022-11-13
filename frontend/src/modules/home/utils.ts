@@ -5,7 +5,6 @@ export const getHomePageConfig = (): HomePageConfig => {
   const {
     publicRuntimeConfig: { home },
   } = getNextConfig();
-  console.log('Home: ' + JSON.stringify(home))
   return home;
 };
 

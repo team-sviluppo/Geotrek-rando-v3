@@ -53,7 +53,6 @@ interface Props {
 
 export const SearchUI: React.FC<Props> = ({ language }) => {
   const { filtersState, setFilterSelectedOptions, resetFilters } = useFilter();
-
   const { subMenuState, selectFilter, hideSubMenu, currentFilterId } = useFilterSubMenu();
   const { menuState, displayMenu, hideMenu, filtersList } = useFilterMenu(selectFilter);
 

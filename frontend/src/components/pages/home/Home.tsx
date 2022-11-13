@@ -11,6 +11,8 @@ import { HomeSection } from './components/HomeSection';
 import { HomeContainer } from './Home.style';
 import { useHome } from './useHome';
 
+import { DetailsUIWithoutContext } from '../details/Details'
+
 const {
   publicRuntimeConfig: { homeBottomHtml, homeTopHtml },
 } = getNextConfig();
@@ -66,6 +68,14 @@ const HomeUI: FunctionComponent = () => {
                   type={type}
                 />
               ))}
+            {config.map.url && config.map.url !== '' ? (
+              <DetailsUIWithoutContext
+                detailsId={config.map.url}
+                parentId={undefined}
+                language={intl.locale}
+                isLayout={false}
+              ></DetailsUIWithoutContext>
+            ) : null}
             {homeBottom !== undefined && (
               <div id="home_bottomHtml" className={classNameHomeChild}>
                 {parse(homeBottom)}

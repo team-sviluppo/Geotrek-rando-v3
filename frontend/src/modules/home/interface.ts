@@ -27,9 +27,14 @@ export interface SuggestionList {
   [language: 'default' | string]: Suggestion[];
 }
 
+export interface HomeMap {
+  url: string;
+}
+
 export interface HomePageConfig {
   welcomeBanner: WelcomeBanner;
   activityBar: ActivityBar;
   carouselUrls: WelcomeBannerList;
   suggestions: Suggestion[];
+  map: HomeMap;
 }
