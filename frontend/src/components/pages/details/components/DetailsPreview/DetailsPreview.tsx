@@ -287,7 +287,7 @@ export const DetailsPreview: React.FC<DetailsPreviewProps> = ({
         <div>
           {Object.entries(groupBy(details.ratings, 'scale.name')).map(([key, entry]) => (
             <div key={key} className={'my-2'}>
-              {key} : {entry.map(e => e.name).join(', ')}
+              {key !== 'undefined' ? `${key} : ${entry.map(e => e.name).join(', ')}` : ''}
             </div>
           ))}
         </div>

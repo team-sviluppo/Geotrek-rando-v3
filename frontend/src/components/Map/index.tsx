@@ -7,8 +7,6 @@ import { PropsType as TouristicContentMapProps } from './TouristicContentMap/Tou
 
 const SearchMapDynamicComponentWithoutMemo: React.FC<SearchMapProps> = props => {
 
-  console.log('props top: ' + JSON.stringify(props))
-
   const SearchMap = dynamic(() => import('./SearchMap'), {
     ssr: false,
   });

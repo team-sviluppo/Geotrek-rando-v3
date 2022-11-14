@@ -82,13 +82,6 @@ export const DetailsDownloadIcons: React.FC<DetailsTopIconsProps> = ({
       )}
 
       <div className="flex space-x-4">
-        {details.pdfUri && (
-          <ToolTip toolTipText={intl.formatMessage({ id: 'tooltip.print' })} invertPosition>
-            <DetailsButton url={details.pdfUri}>
-              <Printer size={30} />
-            </DetailsButton>
-          </ToolTip>
-        )}
 
         {dropdownButtonOptions.length > 0 && (
           <ToolTip toolTipText={intl.formatMessage({ id: 'details.download' })} invertPosition>
