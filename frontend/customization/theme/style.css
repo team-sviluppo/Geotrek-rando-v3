@@ -1,5 +1,5 @@
 /* Override CSS */
-.grid {
+#gridhome {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   grid-gap: 1rem;
@@ -8,17 +8,17 @@
 }
 
 @media screen and (min-width: 1900px) {
-  .grid {
+  #gridhome {
     width: 40% !important;
   }
 }
 
-.grid > div {
+#gridhome > div {
   display: grid;
 }
 
-.grid > div::before,
-.grid > div > img {
+#gridhome > div::before,
+#gridhome > div > img {
   position: absolute;
   max-width: 100%;
   top: 50%;
