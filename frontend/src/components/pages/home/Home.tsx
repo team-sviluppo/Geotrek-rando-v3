@@ -11,7 +11,10 @@ import { HomeSection } from './components/HomeSection';
 import { HomeContainer } from './Home.style';
 import { useHome } from './useHome';
 
-import { DetailsUIWithoutContext } from '../details/Details'
+// import { DetailsUIWithoutContext } from '../details/Details'
+import { SearchUI } from '../search/Search';
+
+// import { SearchMap } from '../../Map/SearchMap'
 
 const {
   publicRuntimeConfig: { homeBottomHtml, homeTopHtml },
@@ -28,6 +31,8 @@ const HomeUI: FunctionComponent = () => {
 
   const homeTop = homeTopHtml[intl.locale] ?? homeTopHtml.default;
   const homeBottom = homeBottomHtml[intl.locale] ?? homeBottomHtml.default;
+
+  const props_search_map = {"type":"DESKTOP","shouldUseClusters":true,"shouldUsePopups":true}
 
   return (
     <>
@@ -69,12 +74,7 @@ const HomeUI: FunctionComponent = () => {
                 />
               ))}
             {config.map.url && config.map.url !== '' ? (
-              <DetailsUIWithoutContext
-                detailsId={config.map.url}
-                parentId={undefined}
-                language={intl.locale}
-                isLayout={false}
-              ></DetailsUIWithoutContext>
+              <SearchUI isLayout={false} language={intl.locale}></SearchUI>
             ) : null}
             {homeBottom !== undefined && (
               <div id="home_bottomHtml" className={classNameHomeChild}>

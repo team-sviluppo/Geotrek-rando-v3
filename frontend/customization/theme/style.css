@@ -42,7 +42,7 @@
 @media screen and (min-width: 800px) {
   .home-icon {
     margin-top: -165px;
-  } 
+  }
 }
 
 @font-face {
@@ -54,7 +54,7 @@
 
 html *
 {
-   font-family: Raleway !important;
+  font-family: Raleway !important;
 }
 
 div#header_inlineMenuSection {
@@ -77,16 +77,16 @@ div#footer {
 }
 
 img.mr-2 {
-    display: none !important;
+  display: none !important;
 }
 
 .testofooter {
   color: white;
 }
 
-@media (min-width: 1024px){
-.desktop\:mx-10percent {
+@media (min-width: 1024px) {
+  .desktop\:mx-10percent {
     margin-left: 1% !important;
     margin-right: 1% !important;
-}
+  }
 }

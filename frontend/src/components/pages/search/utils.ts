@@ -1,4 +1,5 @@
 import { InfiniteData } from 'react-query';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { remove as removeDiacritics } from 'diacritics';
 
@@ -11,7 +12,7 @@ import { OutdoorSite } from '../../../modules/outdoorSite/interface';
 import { TouristicEvent } from '../../../modules/touristicEvent/interface';
 
 /**
- * Interface of an objet representing a filter state informations
+ * Interface of an objet representing a filter state information's
  * suitable for a backend query
  */
 export interface QueryFilterState {
@@ -78,7 +79,7 @@ export const generateResultDetailsUrl = (
 ): string => {
   const titleWithNoSpace = convertStringForSitemap(title);
   const detailsPageUrl = `${route}/${id}-${encodeURI(titleWithNoSpace)}${
-    parentId ? `?parentId=${parentId}` : ''
+    parentId != null ? `?parentId=${parentId}` : ''
   }`;
 
   return detailsPageUrl;
@@ -90,23 +91,38 @@ export const getHoverId = ({
 }: TrekResult | TouristicContentResult | MapResult | OutdoorSite | TouristicEvent): string =>
   `SEARCH-${type}-${id}`;
 
-export const convertStringForSitemap = (text: string): string =>
-  removeDiacritics(
-    (text || '')
-      .replace(/ /g, '-')
-      // eslint-disable-next-line
-      .replace(/ /g, '-')
-      .replace(/'/g, '-')
-      .replace(/°/g, '')
-      .replace(/«/g, '')
-      .replace(/»/g, '')
-      .replace(/"/g, '')
-      .replace(/>/g, '')
-      .replace(/</g, '')
-      .replace(/’/g, '-')
-      .replace(/–/g, '-')
-      .replace(/%/g, '-')
-      .replace(/\+/g, '')
-      .replace(/\//g, '')
-      .replace(/\\/g, ''),
-  );
+/**
+ *
+ * @param text
+ * @param language
+ * @returns
+ */
+export const convertStringForSitemap = (text: string, language?: string): string => {
+
+  const t_f =
+    typeof text === 'object'
+      ? text[language != null && language !== undefined ? language : 'fr']
+      : text;
+
+  const t: string =
+    t_f !== undefined && t_f !== null
+      ? t_f
+          .replace(/ /g, '-')
+          .replace(/ /g, '-')
+          .replace(/'/g, '-')
+          .replace(/°/g, '')
+          .replace(/«/g, '')
+          .replace(/»/g, '')
+          .replace(/"/g, '')
+          .replace(/>/g, '')
+          .replace(/</g, '')
+          .replace(/’/g, '-')
+          .replace(/–/g, '-')
+          .replace(/%/g, '-')
+          .replace(/\+/g, '')
+          .replace(/\//g, '')
+          .replace(/\\/g, '')
+      : '';
+
+  return removeDiacritics(t);
+};

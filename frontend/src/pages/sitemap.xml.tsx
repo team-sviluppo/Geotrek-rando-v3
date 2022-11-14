@@ -81,7 +81,7 @@ const getApiContentForLanguage = async (language: string): Promise<string> => {
     .map(({ id, name }) =>
       name && id
         ? `<url><loc>${baseUrl}/service/${id}-${encodeURI(
-            convertStringForSitemap(name),
+            convertStringForSitemap(name, language),
           )}</loc></url>`
         : '',
     )
@@ -94,7 +94,7 @@ const getApiContentForLanguage = async (language: string): Promise<string> => {
     .map(({ id, name }) =>
       name && id
         ? `<url><loc>${baseUrl}/outdoor-site/${id}-${encodeURI(
-            convertStringForSitemap(name),
+            convertStringForSitemap(name, language),
           )}</loc></url>`
         : '',
     )
@@ -107,7 +107,7 @@ const getApiContentForLanguage = async (language: string): Promise<string> => {
     .map(({ id, name }) =>
       name && id
         ? `<url><loc>${baseUrl}/outdoor-course/${id}-${encodeURI(
-            convertStringForSitemap(name),
+            convertStringForSitemap(name, language),
           )}</loc></url>`
         : '',
     )
@@ -120,7 +120,7 @@ const getApiContentForLanguage = async (language: string): Promise<string> => {
         ? `<url><loc>${external_url}</loc></url>`
         : title && id
         ? `<url><loc>${baseUrl}/information/${id}-${encodeURI(
-            convertStringForSitemap(title),
+            convertStringForSitemap(title, language),
           )}</loc></url>`
         : '',
     )
