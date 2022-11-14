@@ -7,6 +7,12 @@
   width: 50%;
 }
 
+@media screen and (min-width: 1900px) {
+  .grid {
+    width: 40% !important;
+  }
+}
+
 .grid > div {
   display: grid;
 }
@@ -80,7 +86,7 @@ img.mr-2 {
 
 @media (min-width: 1024px){
 .desktop\:mx-10percent {
-    margin-left: 0% !important;
-    margin-right: 0% !important;
+    margin-left: 1% !important;
+    margin-right: 1% !important;
 }
 }
