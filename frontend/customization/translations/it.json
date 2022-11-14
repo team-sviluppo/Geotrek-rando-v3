@@ -182,7 +182,7 @@
   },
   "report": {
     "title": "Segnala un problema o un errore",
-    "intro": "If you have found an error on this page or if you have noticed any problems during your hike, please report them to us here:",
+    "intro": "Se hai trovato un errore in questa pagina o se hai notato problemi durante la tua escursione, segnalacelo qui:",
     "activity": "Attività",
     "category": "Categoria",
     "magnitude": "Portata del problema",
@@ -194,11 +194,11 @@
     "cancel": "Cancella",
     "success": "Grazie, il rapporto è stato inviato.",
     "mapButton": {
-      "create": "Indicate the position of the report on the map",
-      "edit": "Edit the position of the report",
-      "validate": "Validate the position"
+      "create": "Indicare la posizione del rapporto sulla mappa",
+      "edit": "Modifica la posizione del rapporto",
+      "validate": "Convalida la posizione"
     },
-    "GDPRDisclaimer": "These information will be used by <b>organism</b>, which commit to not sell your personal data to third parties. You have the right to read, modify, fix or delete your personal data (art. 34 de la loi \"Informatique et Libertés\"). To apply please send a mail to <a>contact</a>."
+    "GDPRDisclaimer": "Queste informazioni saranno utilizzate da <b>organismo</b>, che si impegna a non vendere i tuoi dati personali a terzi. Hai il diritto di leggere, modificare, correggere o cancellare i tuoi dati personali. Per candidarsi inviare una mail a <a>contatto</a>."
   },
   "error": {
     "missing": "Il modulo non è completo"

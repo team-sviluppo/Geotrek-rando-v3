@@ -1,9 +1,9 @@
 {
   "primary1": {
-    "DEFAULT": "#0A3B12",
+    "DEFAULT": "#006b49",
     "light": "#0A3B09"
   },
-  "primary3": "#0A3B12",
+  "primary3": "#006b49",
   "categories": {
     "trek": "blue",
     "events": "red",
