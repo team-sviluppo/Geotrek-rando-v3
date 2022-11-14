@@ -11,10 +11,7 @@ import { HomeSection } from './components/HomeSection';
 import { HomeContainer } from './Home.style';
 import { useHome } from './useHome';
 
-// import { DetailsUIWithoutContext } from '../details/Details'
 import { SearchUI } from '../search/Search';
-
-// import { SearchMap } from '../../Map/SearchMap'
 
 const {
   publicRuntimeConfig: { homeBottomHtml, homeTopHtml },
@@ -31,8 +28,6 @@ const HomeUI: FunctionComponent = () => {
 
   const homeTop = homeTopHtml[intl.locale] ?? homeTopHtml.default;
   const homeBottom = homeBottomHtml[intl.locale] ?? homeBottomHtml.default;
-
-  const props_search_map = {"type":"DESKTOP","shouldUseClusters":true,"shouldUsePopups":true}
 
   return (
     <>
@@ -57,30 +52,47 @@ const HomeUI: FunctionComponent = () => {
                 <ActivitySearchFilter />
               </div>
             )}
+
             {homeTop !== undefined && (
               <div id="home_topHtml" className={classNameHomeChild}>
                 {parse(homeTop)}
               </div>
             )}
-            {suggestions
-              .filter(({ results }) => results.length > 0)
-              .map(({ titleTranslationId, iconUrl, results, type }) => (
-                <HomeSection
-                  title={intl.formatMessage({ id: titleTranslationId })}
-                  iconUrl={iconUrl}
-                  key={titleTranslationId}
-                  results={results}
-                  type={type}
-                />
-              ))}
-            {config.map.url && config.map.url !== '' ? (
-              <SearchUI isLayout={false} language={intl.locale}></SearchUI>
-            ) : null}
+
+            <div className="home-map">
+              <div className="left-home-map">
+                {suggestions
+                  .filter(({ results }) => results.length > 0)
+                  .map(({ titleTranslationId, iconUrl, results, type }) => (
+                    <HomeSection
+                      title={intl.formatMessage({ id: titleTranslationId })}
+                      iconUrl={iconUrl}
+                      key={titleTranslationId}
+                      results={results}
+                      type={type}
+                    />
+                  ))}
+              </div>
+
+              <div className="right-home-map">
+                {config.map.searchHome === true ? (
+                  <SearchUI
+                    isLayout={false}
+                    language={intl.locale}
+                    initialFiltersState={[]}
+                    touristicContentCategoryMapping={undefined}
+                    initialFiltersStateWithSelectedOptions={[]}
+                  ></SearchUI>
+                ) : null}
+              </div>
+            </div>
+
             {homeBottom !== undefined && (
               <div id="home_bottomHtml" className={classNameHomeChild}>
                 {parse(homeBottom)}
               </div>
             )}
+
           </div>
         </HomeContainer>
         <Footer />

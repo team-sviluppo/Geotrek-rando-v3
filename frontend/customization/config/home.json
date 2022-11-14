@@ -27,6 +27,7 @@
     ]
   },
   "map": {
-    "url": "search"
+    "searchHome": true,
+    "detail": "search"
   }
 }

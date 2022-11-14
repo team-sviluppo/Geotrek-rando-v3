@@ -364,9 +364,9 @@ export const SearchUI: React.FC<Props> = ({ language, isLayout }) => {
       ) : null}
 
       {isL === false ? (
-            <div className="hidden desktop:flex desktop:z-content desktop:w-1/2 desktop:fixed desktop:right-0 desktop:bottom-0 desktop:top-headerAndFilterBar">
-              <SearchMapDynamicComponent type="DESKTOP" shouldUseClusters shouldUsePopups />
-            </div>
+        <div className="home-map-seach">
+          <SearchMapDynamicComponent type="DESKTOP" shouldUseClusters shouldUsePopups />
+        </div>
       ) : null}
 
       {isMobile && isL && (

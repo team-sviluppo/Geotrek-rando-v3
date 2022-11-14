@@ -28,7 +28,8 @@ export interface SuggestionList {
 }
 
 export interface HomeMap {
-  url: string;
+  searchHome: boolean;
+  detailt: string;
 }
 
 export interface HomePageConfig {
