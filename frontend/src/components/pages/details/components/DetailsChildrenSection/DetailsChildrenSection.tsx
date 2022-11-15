@@ -55,6 +55,7 @@ export const DetailsChildrenSection: React.FC<DetailsChildrenSectionProps> = ({
                   type="TREK"
                   place={trekChild.place}
                   title={trekChild.title}
+                  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
                   tags={trekChild.tags || []}
                   thumbnailUris={trekChild.thumbnailUris}
                   attachments={trekChild.attachments}

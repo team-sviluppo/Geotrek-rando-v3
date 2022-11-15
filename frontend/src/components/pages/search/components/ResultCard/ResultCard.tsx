@@ -47,6 +47,8 @@ interface TrekProps extends BaseProps {
     elevation: string;
     difficulty?: { label: string; pictogramUri: string } | null;
     reservationSystem: number | null;
+    beginDate: string | null;
+    endDate: string | null;
   };
 }
 
@@ -73,7 +75,7 @@ interface OutdoorCourseProps extends BaseProps {
 
 interface TouristicEventProps extends BaseProps {
   type: 'TOURISTIC_EVENT';
-  informations: Record<string | number | symbol, string | number | symbol>;
+  informations: any;
 }
 
 type trekType =

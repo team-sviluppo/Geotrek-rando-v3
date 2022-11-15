@@ -14,7 +14,9 @@ interface UseHome {
 export const useHome = (): UseHome => {
   const homePageConfig = getHomePageConfig();
   const language = useRouter().locale ?? getDefaultLanguage();
-  const wbanners = adaptWelcomeBanner(homePageConfig.welcomeBanner.carouselUrls, language) ?? [];
+  const wbanners = homePageConfig.welcomeBanner.carouselUrls
+    ? adaptWelcomeBanner(homePageConfig.welcomeBanner.carouselUrls, language) ?? []
+    : [];
   const suggestions = adaptSuggestions(homePageConfig.suggestions, language) ?? [];
   const activitySuggestionIds = suggestions.flatMap(s => s.ids);
 

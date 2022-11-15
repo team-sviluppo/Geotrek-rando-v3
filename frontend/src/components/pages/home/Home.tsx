@@ -80,8 +80,8 @@ const HomeUI: FunctionComponent = () => {
                     isLayout={false}
                     language={intl.locale}
                     initialFiltersState={[]}
-                    touristicContentCategoryMapping={undefined}
                     initialFiltersStateWithSelectedOptions={[]}
+                    touristicContentCategoryMapping={undefined}
                   ></SearchUI>
                 ) : null}
               </div>
@@ -92,7 +92,6 @@ const HomeUI: FunctionComponent = () => {
                 {parse(homeBottom)}
               </div>
             )}
-
           </div>
         </HomeContainer>
         <Footer />

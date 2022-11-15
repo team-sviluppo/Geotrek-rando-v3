@@ -15,6 +15,6 @@ export interface APIQuery {
   near_trek?: number;
   period?: string;
   q?: string;
-  dates_before?: string;
-  dates_after?: string;
+  dates_before?: string | null | undefined;
+  dates_after?: string | null | undefined;
 }

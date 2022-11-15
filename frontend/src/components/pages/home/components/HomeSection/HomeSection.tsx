@@ -110,12 +110,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ title, iconUrl, result
                   attachments={e.attachments.slice(0, 1)}
                   badgeIconUri={e.typeEvent?.pictogram}
                   badgeName={e.typeEvent?.type}
-                  informations={{
-                    date: {
-                      beginDate: e.beginDate,
-                      endDate: e.endDate,
-                    },
-                  }}
+                  informations={[]}
                   redirectionUrl={generateTouristicEventUrl(e.id, e.name)}
                   className="my-4 desktop:my-6 desktop:mx-1" // Height is limited in desktop to restrain vertical images ; not limiting with short text & informations
                 />

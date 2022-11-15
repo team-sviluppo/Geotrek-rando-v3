@@ -62,5 +62,7 @@ export const adaptTrekResultList = ({
             }
           : null,
       reservationSystem: rawResult.reservation_system,
+      beginDate: null,
+      endDate: null,
     },
   }));

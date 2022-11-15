@@ -141,8 +141,11 @@ export const formatTextFilter = (textFilter: string | null): { q: string } | und
 
 export const formatDateFilter = (
   dateFilter: DateFilter | null,
-): { dates_before?: string; dates_after?: string } => {
-  return { dates_before: dateFilter?.endDate, dates_after: dateFilter?.beginDate };
+): { dates_before?: string | null | undefined; dates_after?: string | null | undefined } => {
+  return {
+    dates_before: dateFilter?.endDate,
+    dates_after: dateFilter?.beginDate,
+  };
 };
 
 export const formatBboxFilter = (bbox: string | null): { in_bbox: string } | undefined =>

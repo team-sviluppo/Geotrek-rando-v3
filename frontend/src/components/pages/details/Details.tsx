@@ -51,10 +51,15 @@ interface Props {
   detailsId: string | string[] | undefined;
   parentId?: string | string[];
   language: string;
-  isLayout: boolean;
+  isLayout: boolean | undefined | null;
 }
 
-export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, language, isLayout }) => {
+export const DetailsUIWithoutContext: React.FC<Props> = ({
+  detailsId,
+  parentId,
+  language,
+  isLayout,
+}) => {
   const {
     id,
     details,
@@ -99,15 +104,14 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
 
   const positiveElevation = parseInt(details?.informations.elevation ?? '0', 10);
   const negativeElevation = parseInt(details?.informations.negativeElevation ?? '0', 10);
-
   const higherDifferenceElevation = Math.max(positiveElevation, Math.abs(negativeElevation));
-
   const displayAltimetricProfile =
     Boolean(higherDifferenceElevation) &&
     (getGlobalConfig().minAltitudeDifferenceToDisplayElevationProfile ?? 0) <
       higherDifferenceElevation;
 
-  return useMemo(() => (
+  return useMemo(
+    () => (
       <>
         {isL ? (
           <PageHead
@@ -141,7 +145,9 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                     details={details}
                     type={'TREK'}
                   />
-                  {details.title !== undefined && <DetailsHeaderMobile title={details.title} />}
+                  {details && details.title !== undefined && (
+                    <DetailsHeaderMobile title={details.title} />
+                  )}
                   <div className="flex flex-1" id="details_mainContainer">
                     <div
                       id="details_informationContainer"
@@ -154,19 +160,20 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                             id="details_cover"
                             className={!isFullscreen ? 'desktop:h-coverDetailsDesktop' : 'h-full'}
                           >
-                            {details.imgs.length > 1 &&
+                            {details &&
+                            details.imgs.length > 1 &&
                             typeof navigator !== 'undefined' &&
                             navigator?.onLine ? (
                               <DetailsCoverCarousel
                                 attachments={details.imgs}
                                 onClickImage={toggleFullscreen}
                               />
-                            ) : (
+                            ) : details ? (
                               <ImageWithLegend
                                 attachment={details.imgs[0]}
                                 onClick={toggleFullscreen}
                               />
-                            )}
+                            ) : null}
                           </div>
                         )}
                       </Modal>
@@ -177,28 +184,32 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                       flex flex-col"
                         ref={sectionsContainerRef}
                       >
-                        <DetailsTopIcons
-                          details={details}
-                          practice={details.practice ?? undefined}
-                        />
-
-                        <div ref={setPreviewRef} id="details_preview_ref">
-                          <DetailsPreview
-                            className={marginDetailsChild}
-                            informations={details.informations}
-                            place={details.place}
-                            tags={details.tags}
-                            title={details.title}
-                            teaser={details.description_teaser}
-                            ambiance={details.ambiance}
+                        {details ? (
+                          <DetailsTopIcons
                             details={details}
-                            trekFamily={trekFamily ?? undefined}
-                            type={'TREK'}
-                            id={id}
+                            practice={details.practice ?? undefined}
                           />
-                        </div>
+                        ) : null}
 
-                        {details.children.length > 0 && (
+                        {details ? (
+                          <div ref={setPreviewRef} id="details_preview_ref">
+                            <DetailsPreview
+                              className={marginDetailsChild}
+                              informations={details.informations}
+                              place={details.place}
+                              tags={details.tags}
+                              title={details.title}
+                              teaser={details.description_teaser}
+                              ambiance={details.ambiance}
+                              details={details}
+                              trekFamily={trekFamily ?? undefined}
+                              type={'TREK'}
+                              id={id}
+                            />
+                          </div>
+                        ) : null}
+
+                        {details && details.children.length > 0 && (
                           <div ref={setChildrenRef} id="details_trekChildren_ref">
                             <DetailsChildrenSection
                               trekChildren={details.children.map(child => ({
@@ -214,7 +225,7 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                           </div>
                         )}
 
-                        {details.pois.length > 0 && (
+                        {details && details.pois.length > 0 && (
                           <div ref={setPoisRef} id="details_poi_ref">
                             <DetailsCardSection
                               htmlId="details_poi"
@@ -236,7 +247,7 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                           </div>
                         )}
 
-                        {details.description && (
+                        {details && details.description && (
                           <div ref={setDescriptionRef} id="details_description_ref">
                             <DetailsDescription
                               descriptionHtml={details.description}
@@ -247,7 +258,8 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                             />
                           </div>
                         )}
-                        {getGlobalConfig().enableMeteoWidget &&
+                        {details &&
+                          getGlobalConfig().enableMeteoWidget &&
                           typeof navigator !== 'undefined' &&
                           navigator.onLine &&
                           details.cities_raw &&
@@ -267,7 +279,7 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                           </DetailsSection>
                         )}
 
-                        {details.sensitiveAreas.length > 0 && (
+                        {details && details.sensitiveAreas.length > 0 && (
                           <div ref={setSensitiveAreasRef} id="details_sensitiveAreas_ref">
                             <DetailsSection
                               htmlId="details_sensitiveAreas"
@@ -288,84 +300,94 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                           </div>
                         )}
 
-                        {(details.labels.length > 0 ||
-                          (details.advice !== null && details.advice.length > 0)) && (
-                          <DetailsSection
-                            htmlId="details_recommandations"
-                            titleId="details.recommandations"
-                            className={marginDetailsChild}
-                          >
-                            {details.advice !== null && details.advice.length > 0 && (
-                              <DetailsAdvice text={details.advice} className="mb-4 desktop:mb-6" />
-                            )}
-                            {details.gear !== null && (
-                              <DetailsGear text={details.gear} className="mt-4 desktop:mb-6" />
-                            )}
-                            {details.labels.map((label, i) => (
-                              <DetailsLabel
-                                key={i}
-                                id={label.id}
-                                name={label.name}
-                                advice={label.advice}
-                                pictogramUri={label.pictogramUri}
-                                className={i < details.labels.length - 1 ? 'mt-4 desktop:mt-6' : ''}
-                              />
-                            ))}
-                            {details.gear !== null && (
-                              <DetailsGear text={details.gear} className="mt-4 desktop:mb-6" />
-                            )}
-                          </DetailsSection>
-                        )}
+                        {details &&
+                          (details.labels.length > 0 ||
+                            (details.advice !== null && details.advice.length > 0)) && (
+                            <DetailsSection
+                              htmlId="details_recommandations"
+                              titleId="details.recommandations"
+                              className={marginDetailsChild}
+                            >
+                              {details.advice !== null && details.advice.length > 0 && (
+                                <DetailsAdvice
+                                  text={details.advice}
+                                  className="mb-4 desktop:mb-6"
+                                />
+                              )}
+                              {details.gear !== null && (
+                                <DetailsGear text={details.gear} className="mt-4 desktop:mb-6" />
+                              )}
+                              {details.labels.map((label, i) => (
+                                <DetailsLabel
+                                  key={i}
+                                  id={label.id}
+                                  name={label.name}
+                                  advice={label.advice}
+                                  pictogramUri={label.pictogramUri}
+                                  className={
+                                    i < details.labels.length - 1 ? 'mt-4 desktop:mt-6' : ''
+                                  }
+                                />
+                              ))}
+                              {details.gear !== null && (
+                                <DetailsGear text={details.gear} className="mt-4 desktop:mb-6" />
+                              )}
+                            </DetailsSection>
+                          )}
 
-                        {(details.informationDesks.length > 0 ||
-                          details.transport ||
-                          details.access) && (
-                          <div ref={setPracticalInformationsRef} id="details_practicalInformationRef">
-                            {details.informationDesks.length > 0 && (
-                              <DetailsSection
-                                htmlId="details_informationDesks"
-                                titleId="details.informationDesks"
-                                className={marginDetailsChild}
-                              >
-                                {details.informationDesks.map((informationDesk, i) => (
-                                  <DetailsInformationDesk key={i} {...informationDesk} />
-                                ))}
-                              </DetailsSection>
-                            )}
+                        {details &&
+                          (details.informationDesks.length > 0 ||
+                            details.transport ||
+                            details.access) && (
+                            <div
+                              ref={setPracticalInformationsRef}
+                              id="details_practicalInformationRef"
+                            >
+                              {details.informationDesks.length > 0 && (
+                                <DetailsSection
+                                  htmlId="details_informationDesks"
+                                  titleId="details.informationDesks"
+                                  className={marginDetailsChild}
+                                >
+                                  {details.informationDesks.map((informationDesk, i) => (
+                                    <DetailsInformationDesk key={i} {...informationDesk} />
+                                  ))}
+                                </DetailsSection>
+                              )}
 
-                            {details.transport && (
-                              <DetailsSection
-                                htmlId="details_transport"
-                                titleId="details.transport"
-                                className={marginDetailsChild}
-                              >
-                                <HtmlText>{parse(details.transport)}</HtmlText>
-                              </DetailsSection>
-                            )}
+                              {details.transport && (
+                                <DetailsSection
+                                  htmlId="details_transport"
+                                  titleId="details.transport"
+                                  className={marginDetailsChild}
+                                >
+                                  <HtmlText>{parse(details.transport)}</HtmlText>
+                                </DetailsSection>
+                              )}
 
-                            {(details.access || details.parking) && (
-                              <DetailsSection
-                                htmlId="details_accessParking"
-                                titleId="details.access_parking"
-                                className={marginDetailsChild}
-                              >
-                                {details.access && (
-                                  <HtmlText id="details_access">{parse(details.access)}</HtmlText>
-                                )}
-                                {details.parking && (
-                                  <div className="mt-4" id="details_parking">
-                                    <p className="font-bold desktop:text-H4">
-                                      {`${intl.formatMessage({ id: 'details.stationnement' })} :`}
-                                    </p>
-                                    <HtmlText>{parse(details.parking)}</HtmlText>
-                                  </div>
-                                )}
-                              </DetailsSection>
-                            )}
-                          </div>
-                        )}
+                              {(details.access || details.parking) && (
+                                <DetailsSection
+                                  htmlId="details_accessParking"
+                                  titleId="details.access_parking"
+                                  className={marginDetailsChild}
+                                >
+                                  {details.access && (
+                                    <HtmlText id="details_access">{parse(details.access)}</HtmlText>
+                                  )}
+                                  {details.parking && (
+                                    <div className="mt-4" id="details_parking">
+                                      <p className="font-bold desktop:text-H4">
+                                        {`${intl.formatMessage({ id: 'details.stationnement' })} :`}
+                                      </p>
+                                      <HtmlText>{parse(details.parking)}</HtmlText>
+                                    </div>
+                                  )}
+                                </DetailsSection>
+                              )}
+                            </div>
+                          )}
 
-                        {shouldDisplayAccessibility(details) && (
+                        {details && shouldDisplayAccessibility(details) && (
                           <div ref={setAccessibilityRef} id="details_accessibility_ref">
                             <DetailsSection
                               htmlId="details_accessibility"
@@ -377,7 +399,7 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                           </div>
                         )}
 
-                        {details.webLinks?.length > 0 && (
+                        {details && details.webLinks?.length > 0 && (
                           <div id="details_more_ref">
                             <DetailsSection
                               htmlId="details_more"
@@ -391,7 +413,7 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                           </div>
                         )}
 
-                        {details.sources.length > 0 && (
+                        {details && details.sources.length > 0 && (
                           <DetailsSection
                             htmlId="details_source"
                             titleId="details.source"
@@ -408,7 +430,7 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                           </DetailsSection>
                         )}
 
-                        {getGlobalConfig().enableReport && (
+                        {details && getGlobalConfig().enableReport && (
                           <div ref={setReportRef}>
                             <DetailsSection
                               htmlId="details_report"
@@ -431,7 +453,7 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                           </div>
                         )}
 
-                        {details.touristicContents.length > 0 && (
+                        {details && details.touristicContents.length > 0 && (
                           <div ref={setTouristicContentsRef} id="details_touristicContent_ref">
                             <DetailsCardSection
                               htmlId="details_touristicContent"
@@ -454,7 +476,8 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                           </div>
                         )}
 
-                        {details.reservation &&
+                        {details &&
+                          details.reservation &&
                           details.reservation_id &&
                           typeof navigator !== 'undefined' &&
                           navigator.onLine && (
@@ -474,7 +497,7 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                       <Footer />
                     </div>
 
-                    {!isMobile && (
+                    {details && !isMobile && (
                       <div
                         id="details_mapContainer"
                         className="desktop:flex desktop:z-content desktop:bottom-0 desktop:fixed desktop:right-0 desktop:w-2/5 desktop:top-headerAndDetailsRecapBar"
@@ -542,7 +565,6 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                         />
                       </div>
                     )}
-
                   </div>
                 </div>
               </Layout>
@@ -607,8 +629,7 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                   service={details.service?.map(service => ({
                     location: { x: service.geometry.x, y: service.geometry.y },
                     pictogramUri:
-                      service.type.pictogram ??
-                      renderToStaticMarkup(<MapPin color="white" />),
+                      service.type.pictogram ?? renderToStaticMarkup(<MapPin color="white" />),
                     name: service.type.name,
                     id: `DETAILS-SERVICE-${service.id}`,
                   }))}
@@ -617,7 +638,7 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
               </div>
             ) : null}
 
-            {isMobile && isL && (
+            {details && isMobile && isL && (
               <MobileMapContainer
                 className={`desktop:hidden fixed right-0 left-0 h-full z-map ${
                   mobileMapState === 'HIDDEN' ? 'invisible' : 'flex'

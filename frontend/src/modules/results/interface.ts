@@ -37,6 +37,8 @@ export interface TrekResult {
     elevation: string;
     difficulty: Difficulty | null;
     reservationSystem: number | null; // Todo should be string | null
+    beginDate: string | null;
+    endDate: string | null;
   };
 }
 
