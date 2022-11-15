@@ -34,7 +34,6 @@ export const ImageWithLegend: React.FC<ImageWithLegendProps> = ({ attachment, on
     className="relative"
     onClick={onClick}
   >
-    <Legend author={attachment.author} legend={attachment.legend} />
     <img
       src={attachment.url}
       className="object-cover object-top overflow-hidden w-full h-full"
