@@ -1,7 +1,7 @@
 import { Button } from 'components/Button';
 import InputRow from 'components/InputRow';
 import TextareaRow from 'components/TextareaRow';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import Loader from 'react-loader';
 
@@ -21,9 +21,15 @@ interface Props {
   displayMobileMap?: () => void;
   trekId: number;
   startPoint: PointGeometry;
+  forceHeadingClassName?: string;
 }
 
-const Report: React.FC<Props> = ({ displayMobileMap, startPoint, trekId }) => {
+const Report: React.FC<Props> = ({
+  displayMobileMap,
+  startPoint,
+  trekId,
+  forceHeadingClassName,
+}) => {
   const {
     state,
     coordinatesReportTouched,
@@ -61,10 +67,15 @@ const Report: React.FC<Props> = ({ displayMobileMap, startPoint, trekId }) => {
     }
   };
 
+  const headingClassName = useMemo(
+    () => forceHeadingClassName ?? 'text-lg',
+    [forceHeadingClassName],
+  );
+
   return (
     <ReportWrapper>
       <div className="flex gap-5 items-center mb-5">
-        <p className="text-lg">
+        <p className={headingClassName}>
           <FormattedMessage id={'report.intro'} />
         </p>
         {!isMobile && (

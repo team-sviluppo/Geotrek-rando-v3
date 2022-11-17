@@ -1,4 +1,5 @@
 import { Separator } from 'components/Separator';
+import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 import { MAX_WIDTH_MOBILE, scrollBar } from 'stylesheet';
@@ -8,6 +9,7 @@ export interface DetailsSectionProps {
   children: React.ReactNode;
   className?: string;
   htmlId?: string;
+  forceTitleClassName?: string;
 }
 
 export const DetailsSection: React.FC<DetailsSectionProps> = ({
@@ -15,7 +17,12 @@ export const DetailsSection: React.FC<DetailsSectionProps> = ({
   children,
   className,
   htmlId,
+  forceTitleClassName,
 }) => {
+  const titleClassName = useMemo(() => {
+    return forceTitleClassName ?? 'text-Mobile-H1 desktop:text-H2 font-bold';
+  }, [forceTitleClassName]);
+
   return (
     <Container className={className} id={htmlId}>
       <ScrollContainer
@@ -27,7 +34,7 @@ export const DetailsSection: React.FC<DetailsSectionProps> = ({
           `}
       >
         {titleId !== undefined && (
-          <p className="text-Mobile-H1 desktop:text-H2 font-bold" id="details_sectionTitle">
+          <p className={titleClassName} id="details_sectionTitle">
             <FormattedMessage id={titleId} />
           </p>
         )}

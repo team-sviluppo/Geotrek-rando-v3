@@ -219,7 +219,7 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({
                             />
                           </div>
                         )}
-{details.description && (
+                        {details.description && (
                           <div ref={setDescriptionRef} id="details_description_ref">
                             <DetailsDescription
                               descriptionHtml={details.description}
@@ -291,7 +291,6 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({
                             </DetailsSection>
                           </div>
                         )}
-
                         {(details.labels.length > 0 ||
                           (details.advice !== null && details.advice.length > 0)) && (
                           <DetailsSection
@@ -421,10 +420,12 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({
                               htmlId="details_report"
                               titleId="report.title"
                               className={marginDetailsChild}
+                              forceTitleClassName="report-title"
                             >
                               <Report
                                 displayMobileMap={displayMobileMap}
                                 trekId={details.id}
+                                forceHeadingClassName="report-heading"
                                 startPoint={{
                                   type: 'Point',
                                   coordinates:
