@@ -4,20 +4,63 @@ import { Layout } from 'components/Layout/Layout';
 import { PageHead } from 'components/PageHead';
 import parse from 'html-react-parser';
 import getNextConfig from 'next/config';
-import React, { FunctionComponent } from 'react';
+import React, { useEffect } from 'react';
 import { useIntl } from 'react-intl';
+import { SearchMapDynamicComponent } from 'components/Map';
+import { useMediaPredicate } from 'react-media-hook';
+import { useListAndMapContext } from 'modules/map/ListAndMapContext';
 import { BannerWithAsset } from './components/BannerWithAsset';
 import { HomeSection } from './components/HomeSection';
 import { HomeContainer } from './Home.style';
 import { useHome } from './useHome';
 
-import { SearchUI } from '../search/Search';
+import { useFilter } from '../search/components/useFilters';
+import { useDateFilter } from '../search/hooks/useDateFilter';
+import { useMapResults } from '../search/hooks/useMapResults';
+import { useTextFilter } from '../search/hooks/useTextFilter';
 
 const {
   publicRuntimeConfig: { homeBottomHtml, homeTopHtml },
 } = getNextConfig();
 
-const HomeUI: FunctionComponent = () => {
+// Beware fellow reader:
+// This map was extracted from `components/pages/search/Search.tsx`.
+// It is meant to be the same map displayed in the search page when no filter
+// is specified.
+const HomeMap: React.FC<{ language: string }> = ({ language }) => {
+  const { filtersState } = useFilter();
+  const { dateFilter } = useDateFilter();
+  const { textFilterState } = useTextFilter();
+  const isMobile = useMediaPredicate('(max-width: 1024px)');
+
+  const { isMapLoading, mapResults } = useMapResults(
+    { filtersState, textFilterState, dateFilter },
+    language,
+  );
+
+  const { setPoints } = useListAndMapContext();
+
+  useEffect(() => {
+    if (mapResults) setPoints(mapResults);
+  }, [mapResults]);
+
+  return (
+    <>
+      {isMapLoading && (
+        <div className="absolute bg-primary2 opacity-40 w-full h-full" style={{ zIndex: 2000 }} />
+      )}
+      {!isMapLoading && (
+        <SearchMapDynamicComponent
+          type={isMobile ? 'MOBILE' : 'DESKTOP'}
+          shouldUseClusters
+          shouldUsePopups
+        />
+      )}
+    </>
+  );
+};
+
+const HomeUI: React.FC<{ language: string }> = ({ language }) => {
   const { config, suggestions, welcomeBanners } = useHome();
 
   const contentContainerClassname = `relative ${
@@ -55,7 +98,18 @@ const HomeUI: FunctionComponent = () => {
 
             {homeTop !== undefined && (
               <div id="home_topHtml" className={classNameHomeChild}>
-                {parse(homeTop)}
+                {parse(homeTop, {
+                  // Due to the library holding the wrong typings, unknown has
+                  // been added here.
+                  // The below block replaces the html element(s) with class `replace-with-map`
+                  // with the HomeMap instance.
+                  replace: (dN: unknown) => {
+                    const domNode = dN as any;
+                    if (domNode.attribs && domNode.attribs.class === 'replace-with-map') {
+                      return <HomeMap language={language} />;
+                    }
+                  },
+                })}
               </div>
             )}
 
@@ -74,17 +128,17 @@ const HomeUI: FunctionComponent = () => {
                   ))}
               </div>
 
-              <div className="right-home-map">
+              {/* <div className="right-home-map">
                 {config.map.searchHome === true ? (
-                  <SearchUI
-                    isLayout={false}
-                    language={intl.locale}
-                    initialFiltersState={[]}
-                    touristicContentCategoryMapping={undefined}
-                    initialFiltersStateWithSelectedOptions={[]}
-                  ></SearchUI>
+                  <div style={{ width: '100%', height: '400px' }}>
+                    <SearchMapDynamicComponent
+                      type={isMobile ? 'MOBILE' : 'DESKTOP'}
+                      shouldUseClusters
+                      shouldUsePopups
+                    />
+                  </div>
                 ) : null}
-              </div>
+              </div> */}
             </div>
 
             {homeBottom !== undefined && (
@@ -92,7 +146,6 @@ const HomeUI: FunctionComponent = () => {
                 {parse(homeBottom)}
               </div>
             )}
-
           </div>
         </HomeContainer>
         <Footer />
