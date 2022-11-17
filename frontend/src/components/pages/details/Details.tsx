@@ -54,7 +54,12 @@ interface Props {
   isLayout: boolean;
 }
 
-export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, language, isLayout }) => {
+export const DetailsUIWithoutContext: React.FC<Props> = ({
+  detailsId,
+  parentId,
+  language,
+  isLayout,
+}) => {
   const {
     id,
     details,
@@ -107,7 +112,8 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
     (getGlobalConfig().minAltitudeDifferenceToDisplayElevationProfile ?? 0) <
       higherDifferenceElevation;
 
-  return useMemo(() => (
+  return useMemo(
+    () => (
       <>
         {isL ? (
           <PageHead
@@ -133,7 +139,7 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
           )
         ) : (
           <>
-            {isL ? (
+            {isL && details ? (
               <Layout>
                 <div id="details_container">
                   <DetailsHeader
@@ -213,7 +219,17 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                             />
                           </div>
                         )}
-
+{details.description && (
+                          <div ref={setDescriptionRef} id="details_description_ref">
+                            <DetailsDescription
+                              descriptionHtml={details.description}
+                              departure={details.departure}
+                              arrival={details.arrival}
+                              cities={details.cities}
+                              className={marginDetailsChild}
+                            />
+                          </div>
+                        )}
                         {details.pois.length > 0 && (
                           <div ref={setPoisRef} id="details_poi_ref">
                             <DetailsCardSection
@@ -232,18 +248,6 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                                 iconName: poi.type.label,
                               }))}
                               type="POI"
-                            />
-                          </div>
-                        )}
-
-                        {details.description && (
-                          <div ref={setDescriptionRef} id="details_description_ref">
-                            <DetailsDescription
-                              descriptionHtml={details.description}
-                              departure={details.departure}
-                              arrival={details.arrival}
-                              cities={details.cities}
-                              className={marginDetailsChild}
                             />
                           </div>
                         )}
@@ -320,7 +324,10 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                         {(details.informationDesks.length > 0 ||
                           details.transport ||
                           details.access) && (
-                          <div ref={setPracticalInformationsRef} id="details_practicalInformationRef">
+                          <div
+                            ref={setPracticalInformationsRef}
+                            id="details_practicalInformationRef"
+                          >
                             {details.informationDesks.length > 0 && (
                               <DetailsSection
                                 htmlId="details_informationDesks"
@@ -542,7 +549,6 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                         />
                       </div>
                     )}
-
                   </div>
                 </div>
               </Layout>
@@ -607,8 +613,7 @@ export const DetailsUIWithoutContext: React.FC<Props> = ({ detailsId, parentId, 
                   service={details.service?.map(service => ({
                     location: { x: service.geometry.x, y: service.geometry.y },
                     pictogramUri:
-                      service.type.pictogram ??
-                      renderToStaticMarkup(<MapPin color="white" />),
+                      service.type.pictogram ?? renderToStaticMarkup(<MapPin color="white" />),
                     name: service.type.name,
                     id: `DETAILS-SERVICE-${service.id}`,
                   }))}
