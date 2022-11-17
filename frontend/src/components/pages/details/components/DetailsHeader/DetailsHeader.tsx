@@ -11,7 +11,7 @@ import { useDetailsHeader } from './useDetailsHeader';
 
 interface DetailsHeaderProps {
   sectionsReferences: MutableRefObject<DetailsHeaderSection>;
-  details: any | Details | OutdoorSiteDetails | OutdoorCourseDetails | TouristicEventDetails;
+  details: Details | OutdoorSiteDetails | OutdoorCourseDetails | TouristicEventDetails;
   type: 'TREK' | 'OUTDOOR_SITE' | 'OUTDOOR_COURSE' | 'TOURISTIC_EVENT';
 }
 

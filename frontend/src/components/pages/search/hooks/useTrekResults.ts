@@ -31,9 +31,7 @@ const computeUrl = (
       ? [...formatFiltersUrl(filtersState), `text=${textFilter}`]
       : formatFiltersUrl(filtersState);
 
-  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
   dateFilter && dateFilter.beginDate !== '' && urlParams.push(`beginDate=${dateFilter?.beginDate}`);
-  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
   dateFilter && dateFilter.endDate !== '' && urlParams.push(`endDate=${dateFilter?.endDate}`);
   const formattedUrl = `search?${urlParams.join('&')}`;
 

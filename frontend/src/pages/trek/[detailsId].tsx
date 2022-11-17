@@ -68,9 +68,7 @@ const Details: NextPage<Props> = ({ errorCode }) => {
 
   if (errorCode === 404) return <Custom404 />;
 
-  return (
-    <DetailsUI detailsId={detailsId} parentId={parentId} language={language} isLayout={true} />
-  );
+  return <DetailsUI detailsId={detailsId} parentId={parentId} language={language} />;
 };
 
 export default Details;

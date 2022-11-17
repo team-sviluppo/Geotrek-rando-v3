@@ -27,6 +27,7 @@ const NoImg = styled.span<{ color?: string }>`
 `;
 
 const Icon: React.FC<IconProps> = ({ iconUri = '', className = '', color }) => {
+
   if (!iconUri) {
     return <NoImg color={color} className={`block rounded-full ${className}`} />;
   }

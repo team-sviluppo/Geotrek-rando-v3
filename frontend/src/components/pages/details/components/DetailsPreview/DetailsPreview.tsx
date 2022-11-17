@@ -41,8 +41,8 @@ interface DetailsPreviewInformation extends DetailsInformation {
   participantNumber?: number;
   meetingPoint?: string;
   date?: {
-    beginDate: any;
-    endDate: any;
+    beginDate: string;
+    endDate: string;
   };
 }
 

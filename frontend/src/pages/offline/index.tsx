@@ -64,8 +64,6 @@ const OfflinePage: NextPage = () => {
                   elevation: String(result.informations.elevation),
                   difficulty: result.informations.difficulty,
                   reservationSystem: null,
-                  beginDate: null,
-                  endDate: null,
                 }}
                 redirectionUrl={generateResultDetailsUrl(result.id, result.title)}
                 className="my-4 desktop:my-6 desktop:mx-1" // Height is not limited to let the card grow with long text & informations. Most photos are not vertical, and does not have to be restrained.

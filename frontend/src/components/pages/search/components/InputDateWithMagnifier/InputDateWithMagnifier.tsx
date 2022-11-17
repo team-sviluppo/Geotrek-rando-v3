@@ -4,7 +4,7 @@ import { colorPalette } from 'stylesheet';
 import CustomizedInputDate from './CustomizedInputDate.style';
 
 interface InputDateWithMagnifierProps {
-  value: any | string;
+  value: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
 }

@@ -46,10 +46,10 @@ import { useDateFilter } from './hooks/useDateFilter';
 
 interface Props {
   initialFiltersState: FilterState[];
-  touristicContentCategoryMapping: any | TouristicContentCategoryMapping;
+  touristicContentCategoryMapping: TouristicContentCategoryMapping;
   initialFiltersStateWithSelectedOptions: FilterState[];
   language: string;
-  isLayout: boolean | undefined | null;
+  isLayout: boolean;
 }
 
 export const SearchUI: React.FC<Props> = ({ language, isLayout }) => {
@@ -130,8 +130,8 @@ export const SearchUI: React.FC<Props> = ({ language, isLayout }) => {
   return (
     <div id="Search">
       {isL === true ? (
-        <PageHead
-          title={`${intl.formatMessage({ id: 'search.title' })}`}
+      <PageHead
+        title={`${intl.formatMessage({ id: 'search.title' })}`}
           description={`${intl.formatMessage({ id: 'search.description' })}`}
         />
       ) : null}
