@@ -1,24 +1,24 @@
-.gridhome {
+/* Override CSS */
+#gridhome {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   grid-gap: 1rem;
   margin: auto;
   width: 50%;
-  padding: 20px;
 }
 
 @media screen and (min-width: 1900px) {
-  .gridhome {
+  #gridhome {
     width: 40% !important;
   }
 }
 
-.gridhome > div {
+#gridhome>div {
   display: grid;
 }
 
-.gridhome > div::before,
-.gridhome > div > img {
+#gridhome>div::before,
+#gridhome>div>img {
   position: absolute;
   max-width: 100%;
   top: 50%;
@@ -28,10 +28,11 @@
 
 .grid-footer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: 100px 200px;
   grid-gap: 1rem;
   margin: auto;
   background-color: #94b655;
+  max-width: 300px;
 }
 
 .footer-custom {
@@ -41,8 +42,7 @@
 
 @media screen and (min-width: 800px) {
   .home-icon {
-    margin-top: 0px;
-    text-align: center;
+    margin-top: -165px;
   }
 }
 
@@ -53,16 +53,7 @@
   font-style: normal;
 }
 
-.home-icon-text {
-  margin-top: 1em;
-}
-
-.home-icon-img {
-  margin-top: 2em;
-}
-
-html *
-{
+html * {
   font-family: Raleway !important;
 }
 
@@ -100,42 +91,6 @@ img.mr-2 {
   }
 }
 
-.home-map {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
-.left-home-map { grid-area: 1 / 1 / 2 / 2; }
-.right-home-map { grid-area: 1 / 2 / 2 / 3; }
-.home-map-seach {
-  position: inherit;
-  width: 100%;
-  height: 100vh;
-  z-index: 999;
-  padding: 15px;
-}
-
-.space {
-  height: 25px;
-  margin-top: 3em;
+div#footer_topHtml {
   background-color: #94b655;
-}
-
-.space-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
-
-.grid-home-image {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 5px;
-  grid-row-gap: 0px;
-  padding: 20px;
 }

@@ -10,7 +10,6 @@ import { SearchMapDynamicComponent } from 'components/Map';
 import { useMediaPredicate } from 'react-media-hook';
 import { useListAndMapContext } from 'modules/map/ListAndMapContext';
 import { BannerWithAsset } from './components/BannerWithAsset';
-import { HomeSection } from './components/HomeSection';
 import { HomeContainer } from './Home.style';
 import { useHome } from './useHome';
 
@@ -61,7 +60,7 @@ const HomeMap: React.FC<{ language: string }> = ({ language }) => {
 };
 
 const HomeUI: React.FC<{ language: string }> = ({ language }) => {
-  const { config, suggestions, welcomeBanners } = useHome();
+  const { config, welcomeBanners } = useHome();
 
   const contentContainerClassname = `relative ${
     config.activityBar.shouldDisplay ? '-top-6 desktop:-top-15' : 'pt-6 desktop:pt-18'
@@ -112,34 +111,6 @@ const HomeUI: React.FC<{ language: string }> = ({ language }) => {
                 })}
               </div>
             )}
-
-            <div className="home-map">
-              <div className="left-home-map">
-                {suggestions
-                  .filter(({ results }) => results.length > 0)
-                  .map(({ titleTranslationId, iconUrl, results, type }) => (
-                    <HomeSection
-                      title={intl.formatMessage({ id: titleTranslationId })}
-                      iconUrl={iconUrl}
-                      key={titleTranslationId}
-                      results={results}
-                      type={type}
-                    />
-                  ))}
-              </div>
-
-              {/* <div className="right-home-map">
-                {config.map.searchHome === true ? (
-                  <div style={{ width: '100%', height: '400px' }}>
-                    <SearchMapDynamicComponent
-                      type={isMobile ? 'MOBILE' : 'DESKTOP'}
-                      shouldUseClusters
-                      shouldUsePopups
-                    />
-                  </div>
-                ) : null}
-              </div> */}
-            </div>
 
             {homeBottom !== undefined && (
               <div id="home_bottomHtml" className={classNameHomeChild}>
