@@ -305,12 +305,14 @@ export const SearchUI: React.FC<Props> = ({ language }) => {
                             attachments={searchResult.attachments}
                             badgeIconUri={searchResult.typeEvent?.pictogram}
                             badgeName={searchResult.typeEvent?.type}
-                            informations={{
-                              date: {
-                                beginDate: searchResult.beginDate,
-                                endDate: searchResult.endDate,
-                              },
-                            }}
+                            informations={
+                              {
+                                date: {
+                                  beginDate: searchResult.beginDate,
+                                  endDate: searchResult.endDate,
+                                },
+                              } as any
+                            }
                             redirectionUrl={generateTouristicEventUrl(
                               searchResult.id,
                               searchResult.name,

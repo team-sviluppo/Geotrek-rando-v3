@@ -9,19 +9,24 @@ export const getHomePageConfig = (): HomePageConfig => {
 };
 
 export const adaptWelcomeBanner = (
-  wbanners: string[] | WelcomeBannerList,
+  wbanners: string[] | WelcomeBannerList | string | undefined,
   language: string,
 ): string[] | null => {
+  if (!wbanners) {
+    throw new Error('wbanners was not specified.');
+  }
 
   if (Array.isArray(wbanners)) {
     return wbanners;
   }
 
-  if (language in wbanners) {
-    return wbanners[language];
+  if (typeof wbanners !== 'string') {
+    if (language in wbanners) {
+      return wbanners[language];
+    }
   }
 
-  return wbanners.default ?? null;
+  return (wbanners as WelcomeBannerList)?.default ?? null;
 };
 
 export const adaptSuggestions = (

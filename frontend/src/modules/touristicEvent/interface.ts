@@ -84,8 +84,8 @@ export interface TouristicEvent {
   themes: string[];
   place: string;
   typeEvent: TouristicEventType;
-  beginDate: string | null;
-  endDate: string | null;
+  beginDate: string;
+  endDate: string;
   logoUri: string | null;
 }
 

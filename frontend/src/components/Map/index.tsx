@@ -6,7 +6,6 @@ import { PropsType as DetailsMapProps } from './DetailsMap/DetailsMap';
 import { PropsType as TouristicContentMapProps } from './TouristicContentMap/TouristicContentMap';
 
 const SearchMapDynamicComponentWithoutMemo: React.FC<SearchMapProps> = props => {
-
   const SearchMap = dynamic(() => import('./SearchMap'), {
     ssr: false,
   });

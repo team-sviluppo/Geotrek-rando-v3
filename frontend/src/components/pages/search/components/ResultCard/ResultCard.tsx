@@ -163,12 +163,13 @@ export const ResultCard: React.FC<trekType & { asColumn?: boolean }> = props => 
               <InformationContainer>
                 {props.informations.date !== undefined && (
                   <LocalIconInformation icon={Calendar}>
-                    {props.informations.date.beginDate === props.informations.date.endDate ? (
+                    {(props.informations.date as any).beginDate ===
+                    (props.informations.date as any).endDate ? (
                       <FormattedMessage
                         id={'dates.singleDate'}
                         values={{
                           date: new Intl.DateTimeFormat(locale).format(
-                            new Date(props.informations.date.beginDate),
+                            new Date((props.informations.date as any).beginDate),
                           ),
                         }}
                       />
@@ -177,10 +178,10 @@ export const ResultCard: React.FC<trekType & { asColumn?: boolean }> = props => 
                         id={'dates.multipleDates'}
                         values={{
                           beginDate: new Intl.DateTimeFormat(locale).format(
-                            new Date(props.informations.date.beginDate),
+                            new Date((props.informations.date as any).beginDate),
                           ),
                           endDate: new Intl.DateTimeFormat(locale).format(
-                            new Date(props.informations.date.endDate),
+                            new Date((props.informations.date as any).endDate),
                           ),
                         }}
                       />

@@ -82,7 +82,6 @@ export const DetailsDownloadIcons: React.FC<DetailsTopIconsProps> = ({
       )}
 
       <div className="flex space-x-4">
-
         {dropdownButtonOptions.length > 0 && (
           <ToolTip toolTipText={intl.formatMessage({ id: 'details.download' })} invertPosition>
             <DetailsButtonDropdown options={dropdownButtonOptions}>

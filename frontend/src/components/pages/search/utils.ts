@@ -98,7 +98,6 @@ export const getHoverId = ({
  * @returns
  */
 export const convertStringForSitemap = (text: string, language?: string): string => {
-
   const t_f =
     typeof text === 'object'
       ? text[language != null && language !== undefined ? language : 'fr']
@@ -108,7 +107,6 @@ export const convertStringForSitemap = (text: string, language?: string): string
     t_f !== undefined && t_f !== null
       ? t_f
           .replace(/ /g, '-')
-          .replace(/ /g, '-')
           .replace(/'/g, '-')
           .replace(/°/g, '')
           .replace(/«/g, '')
