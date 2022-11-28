@@ -13,10 +13,18 @@ export const DetailsCardCarousel: React.FC<DetailsCardCarouselProps> = ({
   height,
 }) => {
   return (
-    <SmallCarousel>
-      {thumbnailUris.map((thumbnailUri, i) => (
-        <CardSingleImage key={i} src={thumbnailUri} height={height} onClick={onClickImage} />
-      ))}
-    </SmallCarousel>
+    <>
+      <SmallCarousel>
+        {thumbnailUris.map((thumbnailUri, i) => (
+          <CardSingleImage
+            className="poi-small-carousel-card-single-image"
+            key={i}
+            src={thumbnailUri}
+            height={height}
+            onClick={onClickImage}
+          />
+        ))}
+      </SmallCarousel>
+    </>
   );
 };
