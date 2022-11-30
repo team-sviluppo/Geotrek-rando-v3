@@ -14,6 +14,7 @@ export interface OrderableMenuItem {
 export interface MenuConfig {
   primaryItemsNumber: number;
   shouldDisplayFavorite: boolean;
+  hideMenuItems?: Array<{ id: number }>;
   supportedLanguages: string[];
   defaultLanguage: string;
 }

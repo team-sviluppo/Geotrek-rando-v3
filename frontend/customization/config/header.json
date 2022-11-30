@@ -2,8 +2,13 @@
   "menu": {
     "primaryItemsNumber": 3,
     "shouldDisplayFavorite": false,
-    "supportedLanguages": ["fr","en","it"],
-    "defaultLanguage": "fr"
+    "supportedLanguages": ["fr", "en", "it"],
+    "defaultLanguage": "fr",
+    "hideMenuItems": [
+      {
+        "id": 6
+      }
+    ]
   },
   "logo": "https://www.comune.torgnon.ao.it/it-it/immagine/img-1234--60-1234-0-0-7091b438abb9e50dd2feabddc5defea3"
 }
